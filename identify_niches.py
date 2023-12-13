@@ -4,14 +4,12 @@ import numpy as np
 import torch
 from torch_geometric.data import Data
 from sklearn.neighbors import NearestNeighbors
-
+from sklearn.cluster import KMeans
+from torch_geometric.nn import GCNConv
+import torch.nn.functional as F
+from sklearn.neighbors import NearestNeighbors
 import plotly.offline as pyo
 import optuna.visualization as ov
-
-
-
-
-
 
 
 # Function to load data (modify as per your file structure)
@@ -70,28 +68,6 @@ edge_index_4 = create_sample_specific_edge_index(coords3, k=5, start_idx=len(coo
 
 
 combined_edge_index = torch.cat((edge_index_1, edge_index_2, edge_index_3, edge_index_4), dim=1)
-
-
-
-
-
-import torch
-import numpy as np
-from sklearn.cluster import KMeans
-from torch_geometric.nn import GCNConv
-import torch.nn.functional as F
-
-
-import numpy as np
-import torch
-from sklearn.neighbors import NearestNeighbors
-
-
-
-# Example usage
-# spatial_coords = np.array([[x1, y1], [x2, y2], ...])
-edge_index = combined_edge_index 
-
 
 
 class GCN(torch.nn.Module):
@@ -196,10 +172,6 @@ pyo.plot(fig, filename='parallel_coordinate_min_ST_2samples.html', auto_open=Fal
 
 
 best_trial = study.best_trial
-
-
-
-
 
 
 
