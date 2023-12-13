@@ -169,8 +169,6 @@ print('Best value (val_c_index):', best_value)
 
 
 
-
-
 # Plot the optimization history
 fig = ov.plot_optimization_history(study)
 
